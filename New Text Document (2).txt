@@ -1,0 +1,23 @@
+select  locations.location_id,locations.city as loc_city,countries.country_name as country_name from locations,countries where locations.country_id=countries.country_id 
+and countries.country_name like 'Can%';
+group by countries.country_name
+
+/*select warehouses which are located in canada*/
+select * from warehouses where location_id in (select locations.location_id from locations,countries where 
+locations.country_id=countries.country_id 
+and countries.country_id like 'US');
+
+/*View what customers has order what product*/
+select customers.name,products.product_name from customers,orders,order_items,products where orders.customer_id=customers.customer_id 
+and
+orders.order_id=order_items.order_id
+and
+order_items.product_id=products.product_id and customers.name='CenturyLink' ;
+
+select * from customers,orders where orders.customer_id=customers.customer_id;
+Select * from warehouses;
+
+Select * from countries;
+select locations.location_id from locations,countries where 
+locations.country_id=countries.country_id 
+and countries.country_name like 'Canada';
